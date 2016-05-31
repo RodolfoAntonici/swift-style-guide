@@ -330,7 +330,7 @@ class TestDatabase : Database {
 
 ## Comments
 
-When they are needed, use comments to explain **why** a particular piece of code does something. Comments must be kept up-to-date or deleted.
+When they are needed, use comments to explain **why** a particular piece of code does something. **Comments must be kept up-to-date or deleted**.
 
 Avoid block comments inline with code, as the code should be as self-documenting as possible. *Exception: This does not apply to those comments used to generate documentation.*
 
@@ -396,9 +396,7 @@ The example above demonstrates the following style guidelines:
 
 ### Use of Self
 
-For conciseness, avoid using `self` since Swift does not require it to access an object's properties or invoke its methods.
-
-Use `self` when required to differentiate between property names and arguments in initializers, and when referencing properties in closure expressions (as required by the compiler):
+For cohesion, use `self` every time you're invoking a class property, that will differentiate between propeties and arguments in initilizers, functions or referencing properties in closure expressions:
 
 ```swift
 class BoardLocation {
@@ -463,7 +461,7 @@ For functions with long signatures, add line breaks at appropriate points and ad
 
 ```swift
 func reticulateSplines(spline: [Double], adjustmentFactor: Double,
-    translateConstant: Int, comment: String) -> Bool {
+                        translateConstant: Int, comment: String) -> Bool {
   // reticulate code goes here
 }
 ```
@@ -639,7 +637,19 @@ Prefer the struct-scope constants `CGRect.infinite`, `CGRect.null`, etc. over gl
 
 ### Lazy Initialization
 
-Consider using lazy initialization for finer grain control over object lifetime. This is especially true for `UIViewController` that loads views lazily. You can either use a closure that is immediately called `{ }()` or call a private factory method. Example:
+Consider using lazy initialization for finer grain control over object lifetime. This is especially true for `UIViewController` that loads views lazily. You can either use a closure that is immediately called `{ }()`. Example:
+
+```swift
+lazy var locationManager: CLLocationManager = {
+    let manager = CLLocationManager()
+    manager.desiredAccuracy = kCLLocationAccuracyBest
+    manager.delegate = self
+    manager.requestAlwaysAuthorization()
+    return manager
+}()
+```
+
+or call a private factory method:
 
 ```swift
 lazy var locationManager: CLLocationManager = self.makeLocationManager()
@@ -665,7 +675,7 @@ Prefer compact code and let the compiler infer the type for constants or variabl
 **Preferred:**
 ```swift
 let message = "Click the button"
-let currentBounds = computeViewBounds()
+let currentBounds = self.computeViewBounds()
 var names = ["Mic", "Sam", "Christine"]
 let maximumWidth: CGFloat = 106.5
 ```
@@ -673,13 +683,13 @@ let maximumWidth: CGFloat = 106.5
 **Not Preferred:**
 ```swift
 let message: String = "Click the button"
-let currentBounds: CGRect = computeViewBounds()
+let currentBounds: CGRect = self.computeViewBounds()
 let names = [String]()
 ```
 
 #### Type Annotation for Empty Arrays and Dictionaries
 
-For empty arrays and dictionaries, use type annotation. (For an array or dictionary assigned to a large, multi-line literal, use type annotation.)
+For empty arrays and dictionaries, use type annotation. (For an array or dictionary assigned to a large, multi-line literal, use type annotation. That will conforms with [Syntactic Sugar](#syntactic-sugar))
 
 **Preferred:**
 ```swift
@@ -943,7 +953,7 @@ The following copyright statement should be included at the top of every source
 file:
 
     /**
-     * Copyright (c) 2016 Razeware LLC
+     * Copyright (c) 2016 Mobile2You.LTDA
      *
      * Permission is hereby granted, free of charge, to any person obtaining a copy
      * of this software and associated documentation files (the "Software"), to deal
@@ -978,11 +988,14 @@ Smiley faces are a very prominent style feature of the raywenderlich.com site! I
 :)
 ```  
 
+**NOTE**: emojis are welcome, just don't use them to name the variables. 😉
+
 ## Credits
 
-[Ray Fix](https://github.com/rayfix) currently maintains this style guide.
+[Rodolfo Antonici](https://github.com/RodolfoAntonici) currently maintains this style guide.
 It is a collaborative effort from the most stylish raywenderlich.com team members and its community: 
 
+* [Ray Fix](https://github.com/rayfix)
 * [Jawwad Ahmad](https://github.com/jawwad)
 * [Soheil Moayedi Azarpour](https://github.com/moayes)
 * [Scott Berrevoets](https://github.com/Scott90)
