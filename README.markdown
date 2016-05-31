@@ -1,6 +1,7 @@
 # The Official Mobile2You Swift Style Guide.
 
-This style guide was made for intern use of the Mobile2You iOS development team, but fell free to use/fork.
+This style guide was made for intern use of the Mobile2you Tecnologia iOS development team, but fell free to use/fork.
+
 It's a fork with minor changes from [Ray Wenderlich Swift Style Guide](https://github.com/raywenderlich/swift-style-guide) 
 
 Our overarching goals are conciseness, readability, and simplicity.
@@ -945,7 +946,7 @@ The following copyright statement should be included at the top of every source
 file:
 
     /**
-     * Copyright (c) 2016 Mobile2You.LTDA
+     * Copyright (c) 2016 Mobile2you Tecnologia LTDA.
      *
      * Permission is hereby granted, free of charge, to any person obtaining a copy
      * of this software and associated documentation files (the "Software"), to deal
