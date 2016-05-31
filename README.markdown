@@ -993,7 +993,8 @@ Smiley faces are a very prominent style feature of the raywenderlich.com site! I
 ## Credits
 
 [Rodolfo Antonici](https://github.com/RodolfoAntonici) currently maintains this style guide.
-It is a collaborative effort from the most stylish raywenderlich.com team members and its community: 
+
+Especial thanks for the raywenderlich.com team members and its community: 
 
 * [Ray Fix](https://github.com/rayfix)
 * [Jawwad Ahmad](https://github.com/jawwad)
