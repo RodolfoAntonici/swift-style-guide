@@ -1,6 +1,6 @@
-# The Official Mobile2You Swift Style Guide.
+# The Official Rodlfo Antonici Swift Style Guide.
 
-This style guide was made for intern use of the Mobile2you Tecnologia iOS development team, but fell free to use/fork.
+This style guide was made for intern use of the development team, but fell free to use/fork.
 
 It's a fork with minor changes from [Ray Wenderlich Swift Style Guide](https://github.com/raywenderlich/swift-style-guide) 
 
@@ -630,7 +630,22 @@ Prefer the struct-scope constants `CGRect.infinite`, `CGRect.null`, etc. over gl
 
 ### Lazy Initialization
 
-Consider using lazy initialization for finer grain control over object lifetime. This is especially true for `UIViewController` that loads views lazily. You can either use a closure that is immediately called `{ }()`. Example:
+Consider using lazy initialization for finer grain control over object lifetime. This is especially true for `UIViewController` that loads views lazily. You should call a private factory method, this will help keep the variable declarations part clear. Example:
+
+**Preferred:**
+```swift
+lazy var locationManager: CLLocationManager = self.makeLocationManager()
+
+private func makeLocationManager() -> CLLocationManager {
+let manager = CLLocationManager()
+manager.desiredAccuracy = kCLLocationAccuracyBest
+manager.delegate = self
+manager.requestAlwaysAuthorization()
+return manager
+}
+```
+
+**Not prefered:** 
 
 ```swift
 lazy var locationManager: CLLocationManager = {
@@ -641,8 +656,6 @@ lazy var locationManager: CLLocationManager = {
     return manager
 }()
 ```
-
-or call a private factory method:
 
 ```swift
 lazy var locationManager: CLLocationManager = self.makeLocationManager()
@@ -940,32 +953,6 @@ if (name == "Hello") {
 }
 ```
 
-## Copyright Statement
-
-The following copyright statement should be included at the top of every source
-file:
-
-    /**
-     * Copyright (c) 2016 Mobile2you Tecnologia LTDA.
-     *
-     * Permission is hereby granted, free of charge, to any person obtaining a copy
-     * of this software and associated documentation files (the "Software"), to deal
-     * in the Software without restriction, including without limitation the rights
-     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-     * copies of the Software, and to permit persons to whom the Software is
-     * furnished to do so, subject to the following conditions:
-     *
-     * The above copyright notice and this permission notice shall be included in
-     * all copies or substantial portions of the Software.
-     *
-     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-     * THE SOFTWARE.
-     */
 
 ## Smiley Face
 
