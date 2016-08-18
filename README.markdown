@@ -1,4 +1,4 @@
-# The Official Rodlfo Antonici Swift Style Guide.
+# The Official Rodolfo Antonici Swift Style Guide.
 
 This style guide was made for intern use of the development team, but fell free to use/fork.
 
@@ -6,7 +6,7 @@ It's a fork with minor changes from [Ray Wenderlich Swift Style Guide](https://g
 
 Our overarching goals are conciseness, readability, and simplicity.
 
-Writing Objective-C? Check out Ray's [Objective-C Style Guide](https://github.com/raywenderlich/objective-c-style-guide) too.
+Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/raywenderlich/objective-c-style-guide) too.
 
 ## Table of Contents
 
